@@ -275,18 +275,18 @@ def download(
 
     if output is None:
         output = filename_from_url
-        
+
     output_is_path = isinstance(output, str)
     if output_is_path and output.endswith(osp.sep):
         if not osp.exists(output):
             os.makedirs(output)
         output = osp.join(output, filename_from_url)
-        
+
     if skip_existed and os.path.exists(output):
         if not quiet:
-            print(f"Skip existed file: {output}.")
-        continue
-        
+            print(f"Skip existed file: {output}")
+        return output
+
     if output_is_path:
         existing_tmp_files = []
         for file in os.listdir(osp.dirname(output) or "."):

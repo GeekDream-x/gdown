@@ -300,12 +300,12 @@ def download_folder(
     files = []
     for id, path in directory_structure:
         local_path = osp.join(root_dir, path)
-        
+
         if skip_existed and os.path.exists(local_path):
             if not quiet:
-                print(f"Skip existed file: {local_path}.")
+                print(f"Skip existed file: {local_path}")
             continue
-            
+
         if id is None:  # folder
             if not skip_download and not osp.exists(local_path):
                 os.makedirs(local_path)
